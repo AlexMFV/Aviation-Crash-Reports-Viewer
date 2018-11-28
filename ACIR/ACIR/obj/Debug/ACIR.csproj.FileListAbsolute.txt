@@ -1,0 +1,10 @@
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe.config
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.pdb
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csprojAssemblyReference.cache
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Properties.Resources.resources
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csproj.GenerateResource.cache
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csproj.CoreCompileInputs.cache
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.exe
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.pdb
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Main.resources

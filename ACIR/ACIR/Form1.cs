@@ -10,11 +10,25 @@ using System.Windows.Forms;
 
 namespace ACIR
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            lblInfo.Text = "Developed by: Alex Valente\nData gathered from" +
+                " 'Aviation Safety Network' official website.";
+
+            lblDataAge.Text = "The database is updated daily, contains descriptions\n" +
+                " of military transport category aircraft and corporate\n" +
+                " jet aircraft safety occurrences since 1919.";
+
+            nupYear.Minimum = 1919;
+            nupYear.Maximum = DateTime.Now.Year;
+            nupYear.Value = nupYear.Maximum;
         }
     }
 }
