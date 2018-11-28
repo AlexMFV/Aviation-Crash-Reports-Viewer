@@ -69,6 +69,7 @@
             this.btnSearchYear.TabIndex = 2;
             this.btnSearchYear.Text = "Search by Year";
             this.btnSearchYear.UseVisualStyleBackColor = true;
+            this.btnSearchYear.Click += new System.EventHandler(this.btnSearchYear_Click);
             // 
             // btnSearchAll
             // 
@@ -121,6 +122,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aviation Crash Reports";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nupYear)).EndInit();

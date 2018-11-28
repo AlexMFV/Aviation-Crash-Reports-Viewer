@@ -8,3 +8,5 @@ C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csp
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.exe
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.pdb
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Main.resources
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.YearSearch.resources
+C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.LoadingScreen.resources

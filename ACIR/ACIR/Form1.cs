@@ -19,7 +19,7 @@ namespace ACIR
 
         private void Main_Load(object sender, EventArgs e)
         {
-            lblInfo.Text = "Developed by: Alex Valente\nData gathered from" +
+            lblInfo.Text = "Developed by: Alex Valente (2018 - " + DateTime.Now.Year + ")\nData gathered from" +
                 " 'Aviation Safety Network' official website.";
 
             lblDataAge.Text = "The database is updated daily, contains descriptions\n" +
@@ -29,6 +29,14 @@ namespace ACIR
             nupYear.Minimum = 1919;
             nupYear.Maximum = DateTime.Now.Year;
             nupYear.Value = nupYear.Maximum;
+        }
+
+        private void btnSearchYear_Click(object sender, EventArgs e)
+        {
+            YearSearch ys = new YearSearch(nupYear.Value.ToString());
+            this.Hide();
+            ys.ShowDialog();
+            this.Show();
         }
     }
 }
