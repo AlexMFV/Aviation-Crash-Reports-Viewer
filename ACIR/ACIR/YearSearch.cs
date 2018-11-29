@@ -23,7 +23,7 @@ namespace ACIR
             public string Plane; //Model of the plane
             public string Registration; //Matrícula in Portuguese
             public string AirlineCompany; //Company responsible for the plane
-            public int Fatalities; //Number of fatalities in the crash
+            public string Fatalities; //Number of fatalities in the crash
             public string Location; //Location of the crash
             public Image CountryFlag; //Link to the Country Image where the crash happened
             public string Category; //Category of the incident
@@ -56,65 +56,50 @@ namespace ACIR
 
         private void YearSearch_Load(object sender, EventArgs e)
         {
-            //Variables
-            List<string> values = new List<string>();
-            List<CrashInfo> crashes = new List<CrashInfo>();
-            string pageContent;
-            //Variables
-
+            string pageContent = "";
             this.Text = "Occurrences reported in " + selectedYear;
+            int page = 1;
 
-            WebClient web = new WebClient();
-            Stream stream;
-
-            stream = web.OpenRead("https://aviation-safety.net/database/dblist.php?Year=" + selectedYear);
-            using (StreamReader reader = new StreamReader(stream))
+            while (true)
             {
-                //label1.Text = reader.ReadToEnd();
-                pageContent = reader.ReadToEnd();
+                List<string> values = new List<string>();
+                List<CrashInfo> crashes = new List<CrashInfo>();
+
+                WebClient web = new WebClient();
+                Stream stream;
+
+                stream = web.OpenRead("https://aviation-safety.net/database/dblist.php?Year=" + selectedYear + "&lang=&page=" + page);
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    pageContent = reader.ReadToEnd();
+                }
+                stream.Close();
+
+                if (pageContent.Contains("no occurrences in the database"))
+                    break;
+
+                //Limits the page to the table tags (What we want to show)
+                pageContent = getStringBetweenTags(pageContent, "<table>", "</table>");
+                //Grabs each individual set of data into a list
+                values = getListFromString(pageContent, "<tr>", "</tr>");
+                values.RemoveAt(1);
+                //Distributes the concatenated string into the actual data
+                crashes = getCrashInfoFromList(values);
+
+                //Only gets the top 100 need to fix for other pages TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+                addToListView(crashes);
+                page++;
             }
-            stream.Close();
 
-            //Limits the page to the table tags (What we want to show)
-            pageContent = getStringBetweenTags(pageContent, "<table>", "</table>");
-            //Grabs each individual set of data into a list
-            values = getListFromString(pageContent, "<tr>", "</tr>");
-            values.RemoveAt(1);
-            //Distributes the concatenated string into the actual data
-            crashes = getCrashInfoFromList(values);
-
-            //Only gets the top 100 need to fix for other pages TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-            //Just testin
-            //label1.Text = "";
-            //string enter = "\n";
-            //foreach (CrashInfo i in crashes)
-            //{
-            //    label1.Text += i.Date + enter;
-            //    label1.Text += i.AirlineCompany + enter;
-            //    label1.Text += i.Category + enter;
-            //    label1.Text += i.CountryFlag.ToString() + enter;
-            //    label1.Text += i.Fatalities.ToString() + enter;
-            //    label1.Text += i.Location + enter;
-            //    label1.Text += i.PageLink + enter;
-            //    label1.Text += i.Plane + enter;
-            //    label1.Text += i.Registration + enter;
-            //    label1.Text += "\n";
-            //}
-
-            foreach(CrashInfo i in crashes)
-            {
-                ListViewItem lvwItem = new ListViewItem();
-                lvwItem.Text = i.Date;
-                lvwItem.SubItems.Add(i.Plane);
-                lvwItem.SubItems.Add(i.Registration);
-                lvwItem.SubItems.Add(i.AirlineCompany);
-                lvwCrashes.Items.Add(lvwItem);
-            }
+            lblResults.Text = "Showing " + lvwCrashes.Items.Count + " results";
 
             this.Show();
             SplashScreen.CloseSplashScreen();
             this.Activate();
+
+            lvwCrashes.Visible = true;
+            lblResults.Visible = true;
             //buildLists(values);
         }
 
@@ -305,7 +290,7 @@ namespace ACIR
             return img;
         }
 
-        int getFatalities(string item, int i)
+        string getFatalities(string item, int i)
         {
             try
             {
@@ -316,20 +301,32 @@ namespace ACIR
                 if (aux.Contains('+'))
                 {
                     vals = aux.Split('+');
-                    return Convert.ToInt32(vals[0]) + Convert.ToInt32(vals[1]);
+                    return (Convert.ToInt32(vals[0]) + Convert.ToInt32(vals[1])).ToString();
                 }
                 else
-                    return Convert.ToInt32(aux);
+                    return Convert.ToInt32(aux).ToString();
             }
             catch(Exception ex)
             {
-                return -1;
+                return " ";
             }
         }
 
-        void buildLists(List<CrashInfo> Crashes)
+        void addToListView(List<CrashInfo> crashes)
         {
-         
+            foreach (CrashInfo i in crashes)
+            {
+                ListViewItem lvwItem = new ListViewItem();
+                lvwItem.Text = i.Date;
+                lvwItem.SubItems.Add(i.Plane);
+                lvwItem.SubItems.Add(i.Registration);
+                lvwItem.SubItems.Add(i.AirlineCompany);
+                lvwItem.SubItems.Add(i.Fatalities);
+                lvwItem.SubItems.Add(i.Location);
+                lvwItem.SubItems.Add(" "); //Add Country Flag atm is just a space
+                lvwItem.SubItems.Add(i.Category);
+                lvwCrashes.Items.Add(lvwItem);
+            }
         }
     }
 }

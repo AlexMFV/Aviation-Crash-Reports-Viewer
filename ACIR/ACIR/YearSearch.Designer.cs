@@ -33,6 +33,11 @@
             this.colPlane = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colReg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colOperator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colFatalities = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colFlag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblResults = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvwCrashes
@@ -44,15 +49,21 @@
             this.colDate,
             this.colPlane,
             this.colReg,
-            this.colOperator});
+            this.colOperator,
+            this.colFatalities,
+            this.colLocation,
+            this.colFlag,
+            this.colCategory});
             this.lvwCrashes.FullRowSelect = true;
+            this.lvwCrashes.GridLines = true;
             this.lvwCrashes.Location = new System.Drawing.Point(12, 12);
             this.lvwCrashes.MultiSelect = false;
             this.lvwCrashes.Name = "lvwCrashes";
-            this.lvwCrashes.Size = new System.Drawing.Size(926, 791);
+            this.lvwCrashes.Size = new System.Drawing.Size(1357, 667);
             this.lvwCrashes.TabIndex = 0;
             this.lvwCrashes.UseCompatibleStateImageBehavior = false;
             this.lvwCrashes.View = System.Windows.Forms.View.Details;
+            this.lvwCrashes.Visible = false;
             // 
             // colDate
             // 
@@ -74,18 +85,52 @@
             this.colOperator.Text = "Operator";
             this.colOperator.Width = 200;
             // 
+            // colFatalities
+            // 
+            this.colFatalities.Text = "Fatalities";
+            this.colFatalities.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // colLocation
+            // 
+            this.colLocation.Text = "Location";
+            this.colLocation.Width = 100;
+            // 
+            // colFlag
+            // 
+            this.colFlag.Text = "";
+            this.colFlag.Width = 30;
+            // 
+            // colCategory
+            // 
+            this.colCategory.Text = "Cat.";
+            this.colCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.colCategory.Width = 50;
+            // 
+            // lblResults
+            // 
+            this.lblResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblResults.AutoSize = true;
+            this.lblResults.Location = new System.Drawing.Point(13, 686);
+            this.lblResults.Name = "lblResults";
+            this.lblResults.Size = new System.Drawing.Size(143, 20);
+            this.lblResults.TabIndex = 1;
+            this.lblResults.Text = "Showing X Results";
+            this.lblResults.Visible = false;
+            // 
             // YearSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(950, 815);
+            this.ClientSize = new System.Drawing.Size(1381, 713);
+            this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lvwCrashes);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "YearSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.YearSearch_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,5 +141,10 @@
         private System.Windows.Forms.ColumnHeader colPlane;
         private System.Windows.Forms.ColumnHeader colReg;
         private System.Windows.Forms.ColumnHeader colOperator;
+        private System.Windows.Forms.ColumnHeader colFatalities;
+        private System.Windows.Forms.ColumnHeader colLocation;
+        private System.Windows.Forms.ColumnHeader colFlag;
+        private System.Windows.Forms.ColumnHeader colCategory;
+        private System.Windows.Forms.Label lblResults;
     }
 }
