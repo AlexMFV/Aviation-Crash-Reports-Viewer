@@ -75,10 +75,6 @@ namespace ACIR
             }
             stream.Close();
 
-            this.Show();
-            SplashScreen.CloseSplashScreen();
-            this.Activate();
-
             //Limits the page to the table tags (What we want to show)
             pageContent = getStringBetweenTags(pageContent, "<table>", "</table>");
             //Grabs each individual set of data into a list
@@ -90,20 +86,35 @@ namespace ACIR
             //Only gets the top 100 need to fix for other pages TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
             //Just testin
-            label1.Text = "";
-            foreach (CrashInfo i in crashes)
+            //label1.Text = "";
+            //string enter = "\n";
+            //foreach (CrashInfo i in crashes)
+            //{
+            //    label1.Text += i.Date + enter;
+            //    label1.Text += i.AirlineCompany + enter;
+            //    label1.Text += i.Category + enter;
+            //    label1.Text += i.CountryFlag.ToString() + enter;
+            //    label1.Text += i.Fatalities.ToString() + enter;
+            //    label1.Text += i.Location + enter;
+            //    label1.Text += i.PageLink + enter;
+            //    label1.Text += i.Plane + enter;
+            //    label1.Text += i.Registration + enter;
+            //    label1.Text += "\n";
+            //}
+
+            foreach(CrashInfo i in crashes)
             {
-                label1.Text += i.Date;
-                label1.Text += i.AirlineCompany;
-                label1.Text += i.Category;
-                //label1.Text = i.CountryFlag;
-                label1.Text += i.Fatalities.ToString();
-                label1.Text += i.Location;
-                label1.Text += i.PageLink;
-                label1.Text += i.Plane;
-                label1.Text += i.Registration;
-                label1.Text += "\n";
+                ListViewItem lvwItem = new ListViewItem();
+                lvwItem.Text = i.Date;
+                lvwItem.SubItems.Add(i.Plane);
+                lvwItem.SubItems.Add(i.Registration);
+                lvwItem.SubItems.Add(i.AirlineCompany);
+                lvwCrashes.Items.Add(lvwItem);
             }
+
+            this.Show();
+            SplashScreen.CloseSplashScreen();
+            this.Activate();
             //buildLists(values);
         }
 
@@ -165,18 +176,15 @@ namespace ACIR
             {
                 if (i == 0) //Link and date
                 {
-                    aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
-                    aux = getStringBetweenTags(item, "<nobr>", "</nobr>");
-                    aux = getStringBetweenTags(aux, "<a href=\"", "</a>");
-                    string[] val = aux.Split(new string[] { "\">" }, StringSplitOptions.None);
-                    crash.PageLink = val[0];
-                    crash.Date = val[1];
+                    string[] dateL = new string[2];
+                    dateL = fillDateLink(item, i);
+                    crash.PageLink = dateL[0];
+                    crash.Date = dateL[1];
                 }
                 else
                     if (i == 1) //Plane
                 {
-                    aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
-                    crash.Plane = getStringBetweenTags(aux, "<td class=\"list\"><NOBR>", "</NOBR></td>");
+                    crash.Plane = getPlane(item, i);
                 }
                 else
                         if (i == 4) //Fatalities
@@ -184,20 +192,16 @@ namespace ACIR
                 else
                         if (i == 6) //CountryFlag (returns URL) TO FIX
                 {
-                    aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i); //Maybe add the Title of the country later
-                    aux = getStringBetweenTags(aux, "<img src=\"", "\" title=");
-                    vals.Add(aux);
+                    vals.Add(getCountryFlag(item, i));
                 }
                 else
-                    if (i == 7)
+                    if (i == 7) //Category
                 {
-                    aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
-                    vals.Add(getStringBetweenTags(aux, "<td class=\"list\">", "</td>"));
+                    vals.Add(getCategory(item, i));
                 }
                 else
-                {
-                    aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
-                    vals.Add(getStringBetweenTags(aux, "<td class=\"list\">", "</td>"));
+                {                    
+                    vals.Add(getAnyOther(item, i));
                 }
             }
 
@@ -210,13 +214,80 @@ namespace ACIR
             return crash;
         }
 
+        string[] fillDateLink(string item, int i) //Returns the array with the strings for the date and the Link of the page
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
+                aux = getStringBetweenTags(item, "<nobr>", "</nobr>");
+                aux = getStringBetweenTags(aux, "<a href=\"", "</a>");
+                return aux.Split(new string[] { "\">" }, StringSplitOptions.None);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
+        string getPlane(string item, int i)
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
+                return getStringBetweenTags(aux, "<td class=\"list\"><NOBR>", "</NOBR></td>");
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        string getCountryFlag(string item, int i)
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i); //Maybe add the Title of the country later
+                return getStringBetweenTags(aux, "<img src=\"", "\" title=");
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+        
+        string getCategory(string item, int i)
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
+                return getStringBetweenTags(aux, "<td class=\"list\">", "</td>");
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
+        string getAnyOther(string item, int i)
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", i);
+                return getStringBetweenTags(aux, "<td class=\"list\">", "</td>");
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         Image getImageFromURL(string url)
         {
             Image img = null;
 
             try
             {
-                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create("https:" + url);
                 webRequest.AllowWriteStreamBuffering = true;
                 webRequest.Timeout = 30000;
 
@@ -236,22 +307,29 @@ namespace ACIR
 
         int getFatalities(string item, int i)
         {
-            string aux = getStringBetweenTags(item, "<td class=\"listdata\">", "</td>", i);
-            aux = getStringBetweenTags(aux, "<td class=\"listdata\">", "</td>");
-            string[] vals = new string[2];
-
-            if (aux.Contains('+'))
+            try
             {
-                vals = aux.Split('+');
-                return Convert.ToInt32(vals[0]) + Convert.ToInt32(vals[1]);
+                string aux = getStringBetweenTags(item, "<td class=\"listdata\">", "</td>", i);
+                aux = getStringBetweenTags(aux, "<td class=\"listdata\">", "</td>");
+                string[] vals = new string[2];
+
+                if (aux.Contains('+'))
+                {
+                    vals = aux.Split('+');
+                    return Convert.ToInt32(vals[0]) + Convert.ToInt32(vals[1]);
+                }
+                else
+                    return Convert.ToInt32(aux);
             }
-            else
-                return Convert.ToInt32(aux);
+            catch(Exception ex)
+            {
+                return -1;
+            }
         }
 
         void buildLists(List<CrashInfo> Crashes)
         {
-
+         
         }
     }
 }

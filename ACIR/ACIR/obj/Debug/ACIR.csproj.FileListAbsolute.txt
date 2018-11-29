@@ -10,3 +10,15 @@ C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.pdb
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Main.resources
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.YearSearch.resources
 C:\Users\alex\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.LoadingScreen.resources
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe.config
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.pdb
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csprojAssemblyReference.cache
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Main.resources
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.LoadingScreen.resources
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Properties.Resources.resources
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.YearSearch.resources
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csproj.GenerateResource.cache
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.exe
+C:\Users\Alex\Desktop\Git Repositories\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.pdb
