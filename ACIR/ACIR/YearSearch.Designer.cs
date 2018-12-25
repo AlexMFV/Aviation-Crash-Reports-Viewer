@@ -56,10 +56,11 @@
             this.colCategory});
             this.lvwCrashes.FullRowSelect = true;
             this.lvwCrashes.GridLines = true;
-            this.lvwCrashes.Location = new System.Drawing.Point(12, 12);
+            this.lvwCrashes.Location = new System.Drawing.Point(8, 8);
+            this.lvwCrashes.Margin = new System.Windows.Forms.Padding(2);
             this.lvwCrashes.MultiSelect = false;
             this.lvwCrashes.Name = "lvwCrashes";
-            this.lvwCrashes.Size = new System.Drawing.Size(1357, 667);
+            this.lvwCrashes.Size = new System.Drawing.Size(868, 435);
             this.lvwCrashes.TabIndex = 0;
             this.lvwCrashes.UseCompatibleStateImageBehavior = false;
             this.lvwCrashes.View = System.Windows.Forms.View.Details;
@@ -110,22 +111,22 @@
             // 
             this.lblResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblResults.AutoSize = true;
-            this.lblResults.Location = new System.Drawing.Point(13, 686);
+            this.lblResults.Location = new System.Drawing.Point(9, 446);
+            this.lblResults.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(143, 20);
+            this.lblResults.Size = new System.Drawing.Size(96, 13);
             this.lblResults.TabIndex = 1;
             this.lblResults.Text = "Showing X Results";
             this.lblResults.Visible = false;
             // 
             // YearSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(1381, 713);
+            this.ClientSize = new System.Drawing.Size(887, 463);
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lvwCrashes);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "YearSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.YearSearch_Load);

@@ -190,8 +190,18 @@ namespace ACIR
                 }
             }
 
-            crash.Registration = vals[0];
-            crash.AirlineCompany = vals[1];
+            //Remove the "blank" Registration to a '-'
+            if (vals[0].Contains("&nbsp"))
+                crash.Registration = "-";
+            else
+                crash.Registration = vals[0];
+
+            //Remove "Banned in the EU" Tag/Symbol
+            if (!vals[1].Contains("<img src"))
+                crash.AirlineCompany = vals[1];
+            else
+                crash.AirlineCompany = vals[1].Substring(vals[1].IndexOf('>') + 1, vals[1].Length - (vals[1].IndexOf('>') + 1)).Trim();
+
             crash.Location = vals[2];
             crash.CountryFlag = getImageFromURL(vals[3]);
             crash.Category = vals[4];
