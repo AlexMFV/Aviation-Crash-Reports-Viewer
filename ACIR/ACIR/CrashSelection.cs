@@ -24,7 +24,9 @@ namespace ACIR
         {
             CrashDetails cs = CrashDetails.RetrieveInfoFromWebsite(link);
             pctPlane.Image = cs._Image;
-            this.Text = cs._Model;
+            this.Text = "Current Status: " + cs._Status;
+            this.lblDate.Text = "Date: " + cs._Date;
+            this.lblTime.Text = "Time: " + cs._Time;
         }
     }
 }

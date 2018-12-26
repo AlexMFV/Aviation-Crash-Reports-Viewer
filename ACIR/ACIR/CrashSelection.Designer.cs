@@ -37,18 +37,20 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(30, 262);
+            this.lblDate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(12, 230);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(33, 13);
+            this.lblDate.Size = new System.Drawing.Size(44, 16);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "Date:";
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(30, 288);
+            this.lblTime.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(12, 256);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(33, 13);
+            this.lblTime.Size = new System.Drawing.Size(38, 15);
             this.lblTime.TabIndex = 1;
             this.lblTime.Text = "Time:";
             // 

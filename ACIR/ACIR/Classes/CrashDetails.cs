@@ -14,14 +14,20 @@ namespace ACIR
     {
         public Image _planeImage;
         public string _planeModel;
+        public string _crashDate;
+        public string _crashTime;
+        public string _currentStatus;
 
         public CrashDetails() { }
 
         //Just for testing
-        public CrashDetails(Image planeImage, string planeModel)
+        public CrashDetails(Image planeImage, string planeModel, string crashDate, string crashTime, string currentStatus)
         {
             this._Image = planeImage;
             this._Model = planeModel;
+            this._Date = crashDate;
+            this._Time = crashTime;
+            this._Status = currentStatus;
         }
 
         //static internal CrashDetails GetCrashInfo(string link)
@@ -62,6 +68,9 @@ namespace ACIR
             CrashDetails crash = new CrashDetails();
             Image _planeImage = null;
             string _planeModel = "";
+            string _crashDate = "";
+            string _crashTime = "";
+            string _currentStatus = "";
 
             foreach (string item in values)
             {
@@ -74,13 +83,28 @@ namespace ACIR
                         if (item.Contains("<img src=")) //Plane Image
                             _planeImage = GetPlaneImage(auxItem);
                     }
+
+                    if (item.Contains("Status:")) //Current Inspection Status
+                        _currentStatus = GetStringValue(getStringBetweenTags(item, "\"desc\">", "</td>", 0)); //Site tag is wrong
+
+                    if (item.Contains("Date:")) //Date of the Accident
+                        _crashDate = GetStringValue(getStringBetweenTags(item, "<td class=\"caption\">", "</td>", 1));
+
+                    if (item.Contains("Time:")) //Time of the Accident
+                            _crashTime = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
                 }
             }
+
+            if (_crashTime == "")
+                _crashTime = "Unknown";
+
+            if (_crashDate == "")
+                _crashTime = "Unknown";
 
             if (_planeImage == null)
                 _planeImage = Properties.Resources.stock_plane;
 
-            return new CrashDetails(_planeImage, _planeModel);
+            return new CrashDetails(_planeImage, _planeModel, _crashDate, _crashTime, _currentStatus);
         }
 
         static internal string getStringBetweenTags(string value, string startTag, string endTag, int idx)
@@ -124,6 +148,16 @@ namespace ACIR
             Image img = getImageFromURL(getStringBetweenTags(item, "<img src=\"", "\""));
             return img;
         }
+        
+        public static string GetStringValue(string item)
+        {
+            string aux = getStringBetweenTags(item, ">", "<");
+
+            if (aux == "" || aux == " ")
+                return "Unknown";
+            else
+                return aux;
+        }
 
         static internal Image getImageFromURL(string url)
         {
@@ -146,7 +180,15 @@ namespace ACIR
                 return null;
             }
 
+            if (img.Width > 245)
+                img = resizeImage(img, new Size(240, (int)img.VerticalResolution));
+
             return img;
+        }
+
+        public static Image resizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
         }
 
         public Image _Image
@@ -161,5 +203,22 @@ namespace ACIR
             set { _planeModel = value; }
         }
 
+        public string _Date
+        {
+            get { return _crashDate; }
+            set { _crashDate = value; }
+        }
+
+        public string _Time
+        {
+            get { return _crashTime; }
+            set { _crashTime = value; }
+        }
+
+        public string _Status
+        {
+            get { return _currentStatus; }
+            set { _currentStatus = value; }
+        }
     }
 }
