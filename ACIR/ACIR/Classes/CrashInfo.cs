@@ -54,11 +54,11 @@ namespace ACIR
 
         static internal List<CrashInfo> GetCrashes(string year)
         {
-            if (CrashInfo.AllSongs.Count == 0)
-                CrashInfo.AllSongs = FillWithCrashes(year);
-            return CrashInfo.AllSongs;
+            if (CrashInfo.AllCrashes.Count == 0)
+                CrashInfo.AllCrashes = FillWithCrashes(year);
+            return CrashInfo.AllCrashes;
         }
-        static private List<CrashInfo> AllSongs = new List<CrashInfo>();
+        static public List<CrashInfo> AllCrashes = new List<CrashInfo>();
 
         static internal List<CrashInfo> FillWithCrashes(string year)
         {
@@ -74,7 +74,7 @@ namespace ACIR
                 WebClient web = new WebClient();
                 Stream stream;
 
-                stream = web.OpenRead("https://aviation-safety.net/database/dblist.php?Year=" + year + "&lang=&page=" + page);
+                stream = web.OpenRead(Properties.Resources.MainPage + "/database/dblist.php?Year=" + year + "&lang=&page=" + page);
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     pageContent = reader.ReadToEnd();
@@ -153,10 +153,7 @@ namespace ACIR
 
         static internal CrashInfo splitCrashInfo(string item)
         {
-            CrashInfo crash;
             List<string> vals = new List<string>();
-            string aux;
-
             string link = null;
             string date = null;
             string plane = null;
@@ -216,7 +213,11 @@ namespace ACIR
             flag = getImageFromURL(vals[3]);
             cat = vals[4];
 
-            return new CrashInfo(link, date, plane, reg, company, Convert.ToInt32(fat), loc, flag, cat);
+            //In case the number of fatalities is unknown we just assume it's 0 (for now)
+            if(fat != " ")
+                return new CrashInfo(link, date, plane, reg, company, Convert.ToInt32(fat), loc, flag, cat);
+            else
+                return new CrashInfo(link, date, plane, reg, company, 0, loc, flag, cat);
         }
 
         static internal string[] fillDateLink(string item, int i) //Returns the array with the strings for the date and the Link of the page

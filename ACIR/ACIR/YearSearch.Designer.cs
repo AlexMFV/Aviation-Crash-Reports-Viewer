@@ -68,6 +68,7 @@
             this.olvCrashes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.olvCrashes.CellEditUseWholeCell = false;
             this.olvCrashes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvDate,
             this.olvPlane,
@@ -81,12 +82,15 @@
             this.olvCrashes.FullRowSelect = true;
             this.olvCrashes.GridLines = true;
             this.olvCrashes.Location = new System.Drawing.Point(12, 12);
+            this.olvCrashes.MultiSelect = false;
             this.olvCrashes.Name = "olvCrashes";
+            this.olvCrashes.SelectAllOnControlA = false;
             this.olvCrashes.ShowGroups = false;
             this.olvCrashes.Size = new System.Drawing.Size(863, 404);
             this.olvCrashes.TabIndex = 2;
             this.olvCrashes.UseCompatibleStateImageBehavior = false;
             this.olvCrashes.View = System.Windows.Forms.View.Details;
+            this.olvCrashes.DoubleClick += new System.EventHandler(this.olvCrashes_DoubleClick);
             // 
             // olvDate
             // 

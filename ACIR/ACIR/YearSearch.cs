@@ -44,6 +44,9 @@ namespace ACIR
             
             olvCrashes.SetObjects(CrashInfo.GetCrashes(selectedYear));
 
+            //Deletes the Crashes List
+            CrashInfo.AllCrashes.Clear();
+
             lblResults.Text = "Showing " + olvCrashes.Items.Count + " results";
 
             this.Show();
@@ -55,7 +58,19 @@ namespace ACIR
 
         private void YearSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //IDK
+            olvCrashes.SetObjects(null);
+            olvCrashes.BuildList();
+        }
+
+        private void olvCrashes_DoubleClick(object sender, EventArgs e)
+        {
+            if(olvCrashes.SelectedIndex != -1)
+            {
+                CrashSelection cs = new CrashSelection((CrashInfo)olvCrashes.SelectedItem.RowObject);
+                this.Hide();
+                cs.ShowDialog();
+                this.Show();
+            }
         }
     }
 }
