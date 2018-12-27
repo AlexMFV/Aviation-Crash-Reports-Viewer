@@ -31,6 +31,8 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.pctPlane = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.pctPlane)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(12, 256);
+            this.lblTime.Location = new System.Drawing.Point(12, 255);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(38, 15);
             this.lblTime.TabIndex = 1;
@@ -65,12 +67,32 @@
             this.pctPlane.TabIndex = 2;
             this.pctPlane.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.textBox1.Location = new System.Drawing.Point(268, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(361, 363);
+            this.textBox1.TabIndex = 3;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(635, 12);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(623, 636);
+            this.webBrowser1.TabIndex = 4;
+            // 
             // CrashSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(1235, 660);
+            this.ClientSize = new System.Drawing.Size(1270, 660);
+            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pctPlane);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblDate);
@@ -89,5 +111,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.PictureBox pctPlane;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }

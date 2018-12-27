@@ -27,6 +27,7 @@ namespace ACIR
             this.Text = "Current Status: " + cs._Status;
             this.lblDate.Text = "Date: " + cs._Date;
             this.lblTime.Text = "Time: " + cs._Time;
+            this.webBrowser1.Url = new Uri("https://aviation-safety.net/statistics/geographical/kml_map_iframe.php?id=20180411-0");
         }
     }
 }
