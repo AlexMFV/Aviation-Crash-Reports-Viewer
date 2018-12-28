@@ -39,3 +39,5 @@ C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Objec
 C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csproj.CopyComplete
 C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.CrashSelection.resources
 C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Images\stock plane.png
+C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+C:\Users\aLEXmfv\Desktop\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
