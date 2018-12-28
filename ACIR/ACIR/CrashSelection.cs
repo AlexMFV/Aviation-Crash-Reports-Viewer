@@ -105,7 +105,7 @@ namespace ACIR
             if (cs._crashSummary == null)
                 this.textBox1.Visible = false;
             else
-                this.textBox1.Text = cs._crashSummary;
+                this.textBox1.Text = cs._crashSummary; this.textBox1.SelectionStart = 0; this.textBox1.SelectionLength = 0;
 
             if (cs._cycles == null)
                 this.lblCycles.Visible = false;
@@ -172,6 +172,8 @@ namespace ACIR
 
         private void button1_Click(object sender, EventArgs e)
         {
+            mapDefaultSize = this.webBrowser1.Size;
+            mapDefaultPos = this.webBrowser1.Location;
             this.webBrowser1.Size = new Size(this.Width, this.Height);
             this.webBrowser1.Location = new Point(0, 0);
             this.btnFS.Enabled = false;

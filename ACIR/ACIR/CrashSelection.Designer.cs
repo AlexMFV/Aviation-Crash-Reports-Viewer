@@ -89,22 +89,23 @@
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.textBox1.Location = new System.Drawing.Point(563, 12);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.LightGreen;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(563, 417);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(359, 386);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(359, 231);
             this.textBox1.TabIndex = 3;
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(563, 404);
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(563, 160);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(359, 244);
             this.webBrowser1.TabIndex = 4;
@@ -221,11 +222,11 @@
             // 
             // lblLocation
             // 
-            this.lblLocation.AutoSize = true;
+            this.lblLocation.BackColor = System.Drawing.Color.Transparent;
             this.lblLocation.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLocation.Location = new System.Drawing.Point(12, 493);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(57, 15);
+            this.lblLocation.Size = new System.Drawing.Size(442, 40);
             this.lblLocation.TabIndex = 17;
             this.lblLocation.Text = "Location:";
             // 
@@ -233,7 +234,7 @@
             // 
             this.lblCycles.AutoSize = true;
             this.lblCycles.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCycles.Location = new System.Drawing.Point(270, 26);
+            this.lblCycles.Location = new System.Drawing.Point(281, 29);
             this.lblCycles.Name = "lblCycles";
             this.lblCycles.Size = new System.Drawing.Size(47, 15);
             this.lblCycles.TabIndex = 10;
@@ -263,7 +264,7 @@
             // 
             this.lblAircraftFate.AutoSize = true;
             this.lblAircraftFate.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAircraftFate.Location = new System.Drawing.Point(268, 106);
+            this.lblAircraftFate.Location = new System.Drawing.Point(279, 109);
             this.lblAircraftFate.Name = "lblAircraftFate";
             this.lblAircraftFate.Size = new System.Drawing.Size(74, 15);
             this.lblAircraftFate.TabIndex = 16;
@@ -273,7 +274,7 @@
             // 
             this.lblAirframeHours.AutoSize = true;
             this.lblAirframeHours.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAirframeHours.Location = new System.Drawing.Point(268, 79);
+            this.lblAirframeHours.Location = new System.Drawing.Point(279, 82);
             this.lblAirframeHours.Name = "lblAirframeHours";
             this.lblAirframeHours.Size = new System.Drawing.Size(110, 15);
             this.lblAirframeHours.TabIndex = 9;
@@ -283,7 +284,7 @@
             // 
             this.lblEngines.AutoSize = true;
             this.lblEngines.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEngines.Location = new System.Drawing.Point(268, 50);
+            this.lblEngines.Location = new System.Drawing.Point(279, 53);
             this.lblEngines.Name = "lblEngines";
             this.lblEngines.Size = new System.Drawing.Size(56, 15);
             this.lblEngines.TabIndex = 11;
@@ -291,23 +292,29 @@
             // 
             // btnFS
             // 
-            this.btnFS.Location = new System.Drawing.Point(830, 608);
+            this.btnFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFS.BackColor = System.Drawing.Color.Turquoise;
+            this.btnFS.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFS.Location = new System.Drawing.Point(829, 362);
             this.btnFS.Name = "btnFS";
             this.btnFS.Size = new System.Drawing.Size(68, 23);
             this.btnFS.TabIndex = 24;
             this.btnFS.Text = "Fullscreen";
-            this.btnFS.UseVisualStyleBackColor = true;
+            this.btnFS.UseVisualStyleBackColor = false;
             this.btnFS.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExitFS
             // 
+            this.btnExitFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExitFS.BackColor = System.Drawing.Color.Turquoise;
             this.btnExitFS.Enabled = false;
-            this.btnExitFS.Location = new System.Drawing.Point(816, 608);
+            this.btnExitFS.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExitFS.Location = new System.Drawing.Point(815, 362);
             this.btnExitFS.Name = "btnExitFS";
             this.btnExitFS.Size = new System.Drawing.Size(94, 23);
             this.btnExitFS.TabIndex = 25;
             this.btnExitFS.Text = "Exit Fullscreen";
-            this.btnExitFS.UseVisualStyleBackColor = true;
+            this.btnExitFS.UseVisualStyleBackColor = false;
             this.btnExitFS.Visible = false;
             this.btnExitFS.Click += new System.EventHandler(this.btnExitFS_Click);
             // 
@@ -342,6 +349,8 @@
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.webBrowser1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CrashSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CrashSelection";

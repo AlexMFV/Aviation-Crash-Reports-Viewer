@@ -202,7 +202,68 @@ namespace ACIR
                     {
                         _location = GetStringValue(getStringBetweenTags(item, ">", "<", 2));
                         _location += GetStringValue(getStringBetweenTags(item, ">", "<", 4));
+
+                        if (_location.Contains("United States of America"))
+                            _location = _location.Replace("United States of America", "USA");
                     }
+
+                    if (item.Contains("Phase:"))
+                        _phase = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
+
+                    if (item.Contains("Nature:"))
+                        _nature = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
+
+                    if (item.Contains("Departure airport:"))
+                    {
+                        if (item.Contains(">-<"))
+                        {
+                            _departureAirport = null;
+                        }
+                        else
+                        {
+                            if (item.Contains(">?<"))
+                            {
+                                _departureAirport = "Unknown";
+                            }
+                            else
+                            {
+                                _departureAirport = GetStringValue(getStringBetweenTags(item, ">", "<", 3));
+                                _departureAirport += GetStringValue(getStringBetweenTags(item, ">", "<", 4));
+                            }
+                        }
+                    }
+
+                    if (item.Contains("Destination airport:"))
+                    {
+                        if (item.Contains(">-<"))
+                        {
+                            _destinationAirport = null;
+                        }
+                        else
+                        {
+                            if (item.Contains(">?<"))
+                            {
+                                _destinationAirport = "Unknown";
+                            }
+                            else
+                            {
+                                _destinationAirport = GetStringValue(getStringBetweenTags(item, ">", "<", 5));
+                                _destinationAirport += GetStringValue(getStringBetweenTags(item, ">", "<", 6));
+                            }
+                        }
+                    }
+
+                    if (item.Contains("Flightnumber:"))
+                        _flightNumber = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
+
+                    if (item.Contains("Narrative:"))
+                    {
+                        _crashSummary = GetStringValue(getStringBetweenTags(item, "<span lang=\"en-US\">", "</span>", 0).Replace("<br />", "ççç"));
+                        _crashSummary = _crashSummary.Replace("ççç", "\r\n");
+                    }
+
+                    if (item.Contains("Map") && item.Contains("infoboxtitle"))
+                        _mapUrl = getMapUrlBetweenTags(item, "<iframe src=\"", "\" height");
                 }
             }
 
@@ -240,6 +301,29 @@ namespace ACIR
             for(int i = 0; i < col.Count; i++)
             {
                 if (col[i].Length > (startTag.Length + endTag.Length))
+                {
+                    idx = i;
+                    break;
+                }
+            }
+
+            string toReturn = col[idx].ToString();
+            toReturn = toReturn.Remove(toReturn.IndexOf(startTag), startTag.Length);
+            toReturn = toReturn.Remove(toReturn.IndexOf(endTag), endTag.Length);
+            //toReturn = toReturn.Substring(toReturn.IndexOf(startTag) + startTag.Length, toReturn.Length-1 - endTag.Length);
+
+            return toReturn;
+        }
+
+        public static string getMapUrlBetweenTags(string value, string startTag, string endTag)
+        {
+            Regex rx = new Regex(startTag + "(.*?)" + endTag); //change to "(.*?)>(.*?)"
+            MatchCollection col = rx.Matches(value);
+
+            int idx = 0;
+            for (int i = 0; i < col.Count; i++)
+            {
+                if(col[i].ToString().Contains("map_iframe.php"))
                 {
                     idx = i;
                     break;
