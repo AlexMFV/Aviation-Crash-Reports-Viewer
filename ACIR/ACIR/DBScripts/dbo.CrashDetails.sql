@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[OccurrenceInfo]
+(
+	[id_info] INT NOT NULL PRIMARY KEY, 
+    [image] INT NULL, 
+    [model] VARCHAR(50) NULL, 
+    [date] VARCHAR(50) NOT NULL, 
+    [time] VARCHAR(50) NULL, 
+    [status] VARCHAR(50) NOT NULL, 
+    [operator] VARCHAR(50) NULL, 
+    [reg] VARCHAR(50) NULL, 
+    [firstFlight] VARCHAR(50) NULL, 
+    [crew] VARCHAR(100) NULL, 
+    [passengers] VARCHAR(100) NULL, 
+    [total] VARCHAR(100) NULL, 
+    [damage] VARCHAR(50) NULL, 
+    [loc] VARCHAR(50) NULL, 
+    [phase] VARCHAR(30) NULL, 
+    [nature] VARCHAR(30) NULL, 
+    [departure] VARCHAR(100) NULL, 
+    [destination] VARCHAR(100) NULL, 
+    [number] VARCHAR(20) NULL, 
+    [summary] TEXT NULL, 
+    [cycles] INT NULL, 
+    [engines] VARCHAR(100) NULL, 
+    [airframe] INT NULL, 
+    [fate] VARCHAR(100) NULL, 
+    [map] VARCHAR(100) NULL
+)
