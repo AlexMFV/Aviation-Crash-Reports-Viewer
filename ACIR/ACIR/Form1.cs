@@ -31,12 +31,33 @@ namespace ACIR
             nupYear.Value = nupYear.Maximum;
         }
 
+        public int SyncDB()
+        {
+            List<CrashInfo> values = CrashInfo.GetCrashes("2018");
+            int count = 0;
+
+            foreach(CrashInfo cr in values)
+            {
+                int value = DBSync.CreateOccurence(cr);
+
+                if (value != 0)
+                    count++;
+            }
+
+            return count;
+        }
+
         private void btnSearchYear_Click(object sender, EventArgs e)
         {
             YearSearch ys = new YearSearch(nupYear.Value.ToString());
             this.Hide();
             ys.ShowDialog();
             this.Show();
+        }
+
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            btnSync.Text = SyncDB().ToString();
         }
     }
 }

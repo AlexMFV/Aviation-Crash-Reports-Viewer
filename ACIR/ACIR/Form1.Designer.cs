@@ -35,6 +35,7 @@
             this.nupYear = new System.Windows.Forms.NumericUpDown();
             this.lblOr = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
+            this.btnSync = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nupYear)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +107,16 @@
             this.lblYear.TabIndex = 6;
             this.lblYear.Text = "Year:";
             // 
+            // btnSync
+            // 
+            this.btnSync.Location = new System.Drawing.Point(244, 106);
+            this.btnSync.Name = "btnSync";
+            this.btnSync.Size = new System.Drawing.Size(43, 23);
+            this.btnSync.TabIndex = 7;
+            this.btnSync.Text = "Sync";
+            this.btnSync.UseVisualStyleBackColor = true;
+            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
+            // 
             // Main
             // 
             this.AcceptButton = this.btnSearchYear;
@@ -113,6 +124,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(371, 166);
+            this.Controls.Add(this.btnSync);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.lblOr);
             this.Controls.Add(this.nupYear);
@@ -141,6 +153,7 @@
         private System.Windows.Forms.NumericUpDown nupYear;
         private System.Windows.Forms.Label lblOr;
         private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.Button btnSync;
     }
 }
 
