@@ -70,7 +70,6 @@ namespace ACIR
             this._AircraftFate = aircraftFate;
             this._MapURL = mapUrl;
             this._ImageList = imgList;
-
         }
 
         //static internal CrashDetails GetCrashInfo(string link)
@@ -183,13 +182,13 @@ namespace ACIR
                         _engines += GetStringValue(getStringBetweenTags(item, ">", "<", 3));
                     }
 
-                    if (item.Contains("Crew:"))
+                    if (item.Contains("Crew:") && item.Contains("Occupants:"))
                         _crew = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
 
-                    if (item.Contains("Passengers:"))
+                    if (item.Contains("Passengers:") && item.Contains("Occupants:"))
                         _passengers = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
 
-                    if (item.Contains("Total:"))
+                    if (item.Contains("Total:") && item.Contains("Occupants:"))
                         _total = GetStringValue(getStringBetweenTags(item, "<td class=\"desc\">", "</td>", 0));
 
                     if (item.Contains("Aircraft damage:"))
