@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ACIR.Properties;
@@ -15,10 +16,12 @@ namespace ACIR
     {
         bool isOn = false;
         bool isLocked = true;
+        BackgroundWorker SyncFullThread = new BackgroundWorker();
 
         public Main()
         {
             InitializeComponent();
+            SyncFullThread.DoWork += FullDBSync;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -42,9 +45,12 @@ namespace ACIR
         /// Fully create all the years of occurrences in the DB
         /// </summary>
         /// <returns></returns>
-        public int FullDBSync()
+        public void FullDBSync(object sender, DoWorkEventArgs e)
         {
-            int date = 1919;
+            btnLock.Enabled = false;
+            btnSync.Enabled = false;
+
+            int date = 2018;
             int count = 0;
 
             while (date <= Convert.ToInt32(DateTime.Now.Year))
@@ -55,11 +61,17 @@ namespace ACIR
                 {
                     int id = DBSync.GetOccurrenceIDByLink(cr.Link);
                     int img_ID;
+                    int countryID = 0;
 
                     if (id == 0)
                     {
+                        countryID = DBSync.GetFlagByFlagName(cr.Flag_Name);
+
+                        if (countryID <= 0)
+                            countryID = DBSync.CreateFlagImage(cr.Flag_Name, DBSync.ImageToByteArray(cr.Img));
+
                         //Creates the occurrence, if it doesn't exist
-                        id = DBSync.CreateOccurence(cr);
+                        id = DBSync.CreateOccurence(cr, countryID);
 
                         if (id != 0)
                             count++;
@@ -89,7 +101,14 @@ namespace ACIR
                 CrashInfo.AllCrashes.Clear();
                 date++;
             }
-            return count;
+
+            Settings.Default.OccurrencesSync = DateTime.Now;
+            Settings.Default.IndividualSync = DateTime.Now;
+            Settings.Default.Save();
+            lblOcc.Text = "Incidents: " + Settings.Default.OccurrencesSync.ToString();
+            lblIndividual.Text = "Individual: " + Settings.Default.IndividualSync.ToString();
+            btnLock.Enabled = true;
+            isLocked = true;
         }
 
         //public int UpdateDB()
@@ -107,12 +126,7 @@ namespace ACIR
 
         private void btnSync_Click(object sender, EventArgs e)
         {
-            int count = FullDBSync();
-            Settings.Default.OccurrencesSync = DateTime.Now;
-            Settings.Default.IndividualSync = DateTime.Now;
-            Settings.Default.Save();
-            lblOcc.Text = "Incidents: " + Settings.Default.OccurrencesSync.ToString();
-            lblIndividual.Text = "Individual: " + Settings.Default.IndividualSync.ToString();
+            SyncFullThread.RunWorkerAsync();
         }
 
         private void button1_Click(object sender, EventArgs e)

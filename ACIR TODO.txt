@@ -4,4 +4,4 @@ End full Sync - Too much time probably 1 hour or more
 
 - Implement Worker Threads and Split the Incidents from the Pages, and split the pages into various worker threads to speed up the process. If there is any worker thread working on the update and the user exits the program store in the variable the year and restart from that year later on next opening of the app (for automatic update)
 
-- Also implement the part for the country flags on the database and use IDs
+-Fix bugs with some of the values of the DB, like PlaneModel, Airframe Hours, PlaneImage and FlagImage (Some of them are not returning the ID when created, only the second time , when they are already created)

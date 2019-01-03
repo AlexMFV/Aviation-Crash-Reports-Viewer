@@ -19,7 +19,7 @@ namespace ACIR
          *  H = Hijacking
          *  C = Criminal Occurrence (Sabotage, ShootDown)
          *  O = Other Occurrence (Ground Fire)
-         * 
+         *
          *  1 = Hull-Loss
          *  2 = Repairable Damage
          * 
@@ -34,12 +34,13 @@ namespace ACIR
         public string _loc;
         public Image _img;
         public string _cat;
+        public string _flagName;
 
         public CrashInfo() { }
 
         public CrashInfo(string PageLink, string Date, string Plane, string Registration,
             string AirlineCompany, int Fatalities, string Location, Image CountryFlag,
-            string Category)
+            string Category, string FlagName)
         {
             this.Link = PageLink; //Page with the full info of the crash
             this.Date = Date; //Date of the crash
@@ -50,6 +51,7 @@ namespace ACIR
             this.Loc = Location; //Location of the crash
             this.Img = CountryFlag; //Link to the Country Image where the crash happened
             this.Cat =  Category; //Category of the incident
+            this.Flag_Name = FlagName;
         }
 
         static internal List<CrashInfo> GetCrashes(string year)
@@ -163,6 +165,7 @@ namespace ACIR
             string loc = null;
             Image flag = null;
             string cat = null;
+            string flagName = null;
 
             for (int i = 0; i < 8; i++)
             {
@@ -212,12 +215,13 @@ namespace ACIR
             loc = vals[2];
             flag = getImageFromURL(vals[3]);
             cat = vals[4];
+            flagName = getCountryFlagName(item);
 
             //In case the number of fatalities is unknown we just assume it's 0 (for now)
             if(fat != " ")
-                return new CrashInfo(link, date, plane, reg, company, Convert.ToInt32(fat), loc, flag, cat);
+                return new CrashInfo(link, date, plane, reg, company, Convert.ToInt32(fat), loc, flag, cat, flagName);
             else
-                return new CrashInfo(link, date, plane, reg, company, 0, loc, flag, cat);
+                return new CrashInfo(link, date, plane, reg, company, 0, loc, flag, cat, flagName);
         }
 
         static internal string[] fillDateLink(string item, int i) //Returns the array with the strings for the date and the Link of the page
@@ -228,6 +232,20 @@ namespace ACIR
                 aux = getStringBetweenTags(item, "<nobr>", "</nobr>");
                 aux = getStringBetweenTags(aux, "<a href=\"", "</a>");
                 return aux.Split(new string[] { "\">" }, StringSplitOptions.None);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        static internal string getCountryFlagName(string item)
+        {
+            try
+            {
+                string aux = getStringBetweenTags(item, "<td class=\"list\">", "</td>", 6);
+                aux = getStringBetweenTags(aux, "<img src=\"", "</td>");
+                return getStringBetweenTags(aux, "title=\"", "\" />");
             }
             catch (Exception ex)
             {
@@ -347,7 +365,7 @@ namespace ACIR
 
         public string Plane
         {
-            get { return _plane; }
+            get { return _plane.Trim(); }
             set { _plane = value; }
         }
 
@@ -385,6 +403,12 @@ namespace ACIR
         {
             get { return _cat; }
             set { _cat = value; }
+        }
+
+        public string Flag_Name
+        {
+            get { return _flagName; }
+            set { _flagName = value; }
         }
     }
 }

@@ -411,7 +411,7 @@ namespace ACIR
 
         public string _Model
         {
-            get { return _planeModel; }
+            get { return _planeModel.Trim(); }
             set { _planeModel = value; }
         }
 

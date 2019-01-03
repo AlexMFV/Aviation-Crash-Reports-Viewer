@@ -52,7 +52,7 @@ namespace ACIR
 
         #region Insert
 
-        public static int CreateOccurence(CrashInfo crash)
+        public static int CreateOccurence(CrashInfo crash, int flag_id)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ACIR
                 Command.Parameters.AddWithValue("@oper", crash.Operator);
                 Command.Parameters.AddWithValue("@fat", crash.Fat);
                 Command.Parameters.AddWithValue("@loc", crash.Loc);
-                Command.Parameters.AddWithValue("@flag", ImageToByteArray(crash.Img));
+                Command.Parameters.AddWithValue("@flag_id", flag_id);
                 Command.Parameters.AddWithValue("@category", crash.Cat);
                 Command.Parameters.AddWithValue("@link", crash.Link);
 
@@ -147,6 +147,30 @@ namespace ACIR
             }
         }
 
+        public static int CreateFlagImage(string name, byte[] img)
+        {
+            if (name == null)
+                return 0;
+
+            try
+            {
+                BDConnect("CreateFlag");
+
+                Command.Parameters.AddWithValue("@name", name);
+                Command.Parameters.AddWithValue("@img", img != null ? img : Convert.DBNull);
+
+                return Convert.ToInt32(Command.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                BDDisconnect();
+            }
+        }
+
         #endregion
 
         #region Update
@@ -206,6 +230,29 @@ namespace ACIR
                 BDConnect("SelectPlaneImageIDByPlaneModel");
 
                 Command.Parameters.AddWithValue("@model", model.Trim());
+
+                return Convert.ToInt32(Command.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                BDDisconnect();
+            }
+        }
+
+        public static int GetFlagByFlagName(string name)
+        {
+            if (name == null)
+                return 0;
+
+            try
+            {
+                BDConnect("SelectFlagByFlagName");
+
+                Command.Parameters.AddWithValue("@name", name);
 
                 return Convert.ToInt32(Command.ExecuteScalar());
             }
