@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HelpCollection>
+<HelpCollection 
+	DTDVersion = "1.0"
+	Id = "TOC"
+	FileVersion = "1.0.0.0" 
+	LangId = "1033" 
+	Title = "Microsoft Visual Basic 2005 Power Packs" 
+	Copyright = "Copyright (c) 2008 Microsoft Corporation. All Rights Reserved."
+	>
+
+	<TOCDef File="_vbppv3.HxT" />
+
+	<KeywordIndexDef File = "_ALinks.HxK"/>
+	<KeywordIndexDef File = "_BLinks.HxK"/>
+	<KeywordIndexDef File = "_CLinks.HxK"/>
+	<KeywordIndexDef File = "_FLinks.HxK"/>
+	<KeywordIndexDef File = "_KLinks.HxK"/>
+	<KeywordIndexDef File = "_SLinks.HxK"/>
+	<KeywordIndexDef File = "_vbppv3_NamedURLs.hxk"/>
+	<KeywordIndexDef File=	"_vbppv3_Samples.HxK" />
+
+	<ItemMoniker Name = "!DefaultNamedUrlIndex" ProgId = "HxDs.HxIndex" InitData = "VBPPv3NamedUrls"/>
+	<ItemMoniker Name = "!SampleInfo" ProgId = "HxDs.HxSampleCollection" InitData = "Samples"/>
+	<ItemMoniker Name = "!DefaultTOC" ProgId = "HxDs.HxHierarchy" InitData = "TOC"/>
+	<ItemMoniker Name = "!DefaultFullTextSearch" ProgId = "HxDs.HxFullTextSearch" InitData = ""/>
+	<ItemMoniker Name = "!DefaultAssociativeIndex" ProgId = "HxDs.HxIndex" InitData = "A"/>
+	<ItemMoniker Name = "!DefaultDynamicLinkIndex" ProgId = "HxDs.HxIndex" InitData = "B"/>
+	<ItemMoniker Name = "!DefaultCodeIndex" ProgId = "HxDs.HxIndex" InitData = "C"/>
+	<ItemMoniker Name = "!DefaultContextWindowIndex" ProgId = "HxDs.HxIndex" InitData = "F"/>
+	<ItemMoniker Name = "!DefaultKeywordIndex" ProgId = "HxDs.HxIndex" InitData = "K"/>
+	<ItemMoniker Name = "!DefaultSearchWindowIndex" ProgId = "HxDs.HxIndex" InitData = "S"/>
+	<ItemMoniker Name = "!DefaultSampleIndex" ProgId="HxDs.HxIndex" InitData="Samples" />
+</HelpCollection>

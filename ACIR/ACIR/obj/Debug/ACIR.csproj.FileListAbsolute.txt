@@ -45,11 +45,8 @@ C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe.config
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.exe
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ACIR.pdb
-C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ObjectListView.dll
-C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\ObjectListView.xml
-C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csprojResolveAssemblyReference.cache
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.CrashSelection.resources
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.Main.resources
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.LoadingScreen.resources
@@ -63,3 +60,5 @@ C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\DB.mdf
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\DB_log.ldf
 C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Bunifu_UI_v1.5.4.dll
+C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll
+C:\Users\aLEXmfv\Desktop\Coding Projects\Aviation-Crash-Reports-Viewer\ACIR\ACIR\obj\Debug\ACIR.csprojAssemblyReference.cache

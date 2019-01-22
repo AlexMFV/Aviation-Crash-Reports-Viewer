@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE HelpTOC>
+<HelpTOC 
+	DTDVersion="1.0" 
+	Id="TOC"
+	FileVersion="3.0.0.0" 
+	LangId="1033"
+	PluginStyle="Hierarchical" 
+	PluginTitle="Microsoft Visual Basic 2005 Power Packs" 
+	>
+    
+	<HelpTOCNode NodeType="TOC" Url="dv_vboshapelinecon" />
+</HelpTOC>

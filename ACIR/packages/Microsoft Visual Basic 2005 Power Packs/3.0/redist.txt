@@ -1,0 +1,5 @@
+The following list is a list of files available with Microsoft Visual Basic PowerPacks for redistribution under the Microsoft Visual Basic PowerPacks license.
+
+Subject to the license terms for the software, the following .exe file may be distributed unmodified:
+
+	VisualBasicPowerPacksSetup.exe
