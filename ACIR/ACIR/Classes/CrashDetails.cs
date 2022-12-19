@@ -95,10 +95,10 @@ namespace ACIR
             }
             stream.Close();
 
-            pageContent = DeleteComments(pageContent);
-
             //Limits the page to the table tags (What we want to show)
-            pageContent = CrashInfo.getStringBetweenTags(pageContent, "<body>", "</body>");
+            pageContent = CrashInfo.getStringBetweenTags(pageContent, "<div class=\"innertube\">", "<!-- end div innertube -->");
+            
+            pageContent = DeleteComments(pageContent);
             //Grabs each individual set of data into a list
             values = CrashInfo.getListFromString(pageContent, "<tr>", "</tr>");
             //Distributes the concatenated string into the actual data
@@ -334,6 +334,9 @@ namespace ACIR
             toReturn = toReturn.Remove(toReturn.IndexOf(endTag), endTag.Length);
             //toReturn = toReturn.Substring(toReturn.IndexOf(startTag) + startTag.Length, toReturn.Length-1 - endTag.Length);
 
+            if (!toReturn.Contains("aviation-safety.net"))
+                toReturn = "https://aviation-safety.net" + toReturn;
+
             return toReturn;
         }
 
@@ -361,6 +364,9 @@ namespace ACIR
         static internal Image getImageFromURL(string url)
         {
             Image img = null;
+
+            if (!url.Contains("aviation-safety.net"))
+                url = "//aviation-safety.net" + url;
 
             try
             {

@@ -132,7 +132,10 @@ namespace ACIR
         static internal List<string> getListFromString(string value, string startTag, string endTag)
         {
             List<string> values = new List<string>();
-            return value.Split(new string[] { startTag, endTag }, StringSplitOptions.None).ToList();
+            if(value != null)
+                return value.Split(new string[] { startTag, endTag }, StringSplitOptions.None).ToList();
+            else
+                return new List<string>();
         }
 
         static internal List<CrashInfo> getCrashInfoFromList(List<string> values)
